@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export const MainScreen = () =>{
   return (
     <View style={styles.container}>
-      <Text>This is my main screen</Text>
+      <Text testID='helloText'>This is my main screen</Text>
       <StatusBar style="auto" />
     </View>
   );

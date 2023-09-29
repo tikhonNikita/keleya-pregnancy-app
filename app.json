@@ -1,5 +1,8 @@
 {
   "expo": {
+    "plugins": [
+      "@config-plugins/detox"
+    ],
     "name": "keleya-pregnancy-app",
     "slug": "keleya-pregnancy-app",
     "version": "1.0.0",
@@ -15,7 +18,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.nikitatikhonov.keleyapregnancyapp"
     },
     "android": {
       "adaptiveIcon": {
@@ -29,7 +33,6 @@
         "projectId": "956dcf0d-7f2d-414a-8d0e-90b0709b93f8"
       }
     },
-    
     "build": {
       "preview": {
         "android": {
