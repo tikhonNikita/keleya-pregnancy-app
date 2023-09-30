@@ -34,6 +34,12 @@ module.exports = {
     simulator: {
       type: 'ios.simulator',
       device: {
+        type: 'iPhone 14',
+      },
+    },
+    localSimulator: {
+      type: 'ios.simulator',
+      device: {
         type: 'iPhone 15',
       },
     },
@@ -61,6 +67,10 @@ module.exports = {
     },
     'android.local': {
       device: 'localEmulator',
+      app: 'android.release',
+    },
+    'ios.local': {
+      device: 'localSimulator',
       app: 'ios.release',
     }
   },

@@ -9,7 +9,9 @@
     "web": "npx expo start --web",
     "ts:check": "tsc --noEmit",
     "eas-build-pre-install": "./eas-hooks/eas-build-pre-install.sh",
-    "eas-build-on-success": "./eas-hooks/eas-build-on-success.sh"
+    "eas-build-on-success": "./eas-hooks/eas-build-on-success.sh",
+    "e2e:android": "npx expo prebuild --clean && detox build -c android.release && detox test -c android.local",
+    "e2e:ios": "npx expo prebuild --clean && detox build -c ios.release && detox test -c ios.local"
   },
   "dependencies": {
     "@react-navigation/native": "^6.1.8",
