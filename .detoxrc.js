@@ -40,9 +40,15 @@ module.exports = {
     emulator: {
       type: 'android.emulator',
       device: {
-        avdName: 'Pixel_5_API_32',
+        avdName: 'pixel_4',
       },
     },
+    localEmulator: {
+      type: 'android.emulator',
+      device: {
+        avdName: 'Pixel_5_API_32',
+      },
+    }
   },
   configurations: {
     'ios.release': {
@@ -53,5 +59,9 @@ module.exports = {
       device: 'emulator',
       app: 'android.release',
     },
+    'android.local': {
+      device: 'localEmulator',
+      app: 'ios.release',
+    }
   },
 };
