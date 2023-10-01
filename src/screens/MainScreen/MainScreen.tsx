@@ -1,10 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
+import { Button } from '../../components';
+
 export const MainScreen = () =>{
   return (
     <View style={styles.container}>
-      <Text testID='helloText'>This is my main screen</Text>
+      <Button title={'Log in'} onPress={() => console.log('Pressed')}/>
       <StatusBar style="auto" />
     </View>
   );
