@@ -1,18 +1,29 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
-import { Button } from '../../components';
-import { BaseTextInput } from '../../components/BaseTextInput';
+import { Button, EmailInput, useUncontrolledEmailInput } from '../../components';
 
-export const MainScreen = () =>{
+export const MainScreen = () => {
+  const { emailValidationError, handleInputChange, getEmailIfValid } = useUncontrolledEmailInput();
+
+  const onPress = () => {
+    const email = getEmailIfValid();
+    if(email) {
+      console.log('VALID', email);
+    } else {
+      console.log('INVALID');
+    }
+    
+  };
+
   return (
     <View style={styles.container}>
-      <BaseTextInput />
-      <Button title={'Log in'} onPress={() => console.log('Pressed')}/>
+      <EmailInput error={emailValidationError} onChangeText={handleInputChange} />
+      <Button title="Log in" onPress={onPress} />
       <StatusBar style="auto" />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

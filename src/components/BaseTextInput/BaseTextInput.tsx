@@ -17,13 +17,13 @@ export const BaseTextInput = forwardRef<TextInput, Props>(
   ({ errorMessage, ...props }, ref) => {
     
     const isValid = !errorMessage;
-    const borderColor = isValid ? colors.WARM_GREY : colors.BUBBLE_GUM;
+    const borderBottomColor = isValid ? colors.WARM_GREY : colors.BUBBLE_GUM;
 
     return (
       <View style={styles.container}>
         <TextInput
           ref={ref}
-          style={[styles.input, { borderColor }]}
+          style={[styles.input, { borderBottomColor }]}
           placeholderTextColor={colors.WARM_GREY}
           {...props}
         />
@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
   },
   error: {
     paddingLeft: 20,
+    paddingTop: 5,
     color: colors.BUBBLE_GUM,
     fontSize: 14,
   },
