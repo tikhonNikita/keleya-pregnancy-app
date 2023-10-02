@@ -15,13 +15,17 @@ type Props = TextInputProps & {
 
 export const BaseTextInput = forwardRef<TextInput, Props>(
   ({ errorMessage, ...props }, ref) => {
+    const [focused, setFocused] = React.useState(false);
     
     const isValid = !errorMessage;
-    const borderBottomColor = isValid ? colors.WARM_GREY : colors.BUBBLE_GUM;
+    const borderColor = focused ? colors.GREYISH_BROWN : colors.WARM_GREY;
+    const borderBottomColor = isValid ? borderColor : colors.BUBBLE_GUM;
 
     return (
       <View style={styles.container}>
         <TextInput
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
           ref={ref}
           style={[styles.input, { borderBottomColor }]}
           placeholderTextColor={colors.WARM_GREY}
