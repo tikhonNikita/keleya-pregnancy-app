@@ -1,25 +1,27 @@
 // react native button component
-import React from 'react';
-import { TouchableOpacity, StyleSheet, Text } from 'react-native';
-import { colors } from '../../theme';
+import React from 'react'
+import {TouchableOpacity, StyleSheet, Text} from 'react-native'
+import {colors} from '../../theme'
 
 type Props = {
-  title: string;
-  onPress: () => void;
-  disabled?: boolean;
+  title: string
+  onPress: () => void
+  disabled?: boolean
 }
 
-const _Button: React.FC<Props> = ({ title, onPress, disabled }) => {
-  const backgroundColor = disabled ? colors.WARM_GREY : colors.PALE_TEAL;
+const _Button: React.FC<Props> = ({title, onPress, disabled}) => {
+  const backgroundColor = disabled ? colors.WARM_GREY : colors.PALE_TEAL
   return (
-    <TouchableOpacity style={[styles.button, {backgroundColor}]} onPress={onPress} disabled={disabled}>
+    <TouchableOpacity
+      style={[styles.button, {backgroundColor}]}
+      onPress={onPress}
+      disabled={disabled}>
       <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
-  );
-};
+  )
+}
 
-export const Button = React.memo(_Button);
-
+export const Button = React.memo(_Button)
 
 const styles = StyleSheet.create({
   button: {
@@ -36,8 +38,8 @@ const styles = StyleSheet.create({
     color: colors.WHITE,
     fontSize: 24,
     fontWeight: '400',
-    textAlign: 'center'
+    textAlign: 'center',
   },
-});
+})
 
-export default Button;
+export default Button

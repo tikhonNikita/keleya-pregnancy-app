@@ -1,25 +1,19 @@
-import React, { forwardRef } from "react";
-import {
-  TextInput,
-  StyleSheet,
-  TextInputProps,
-  View,
-  Text,
-} from "react-native";
+import React, {forwardRef} from 'react'
+import {TextInput, StyleSheet, TextInputProps, View, Text} from 'react-native'
 
-import { colors } from "../../theme";
+import {colors} from '../../theme'
 
 type Props = TextInputProps & {
-  errorMessage?: string;
-};
+  errorMessage?: string
+}
 
 export const BaseTextInput = forwardRef<TextInput, Props>(
-  ({ errorMessage, ...props }, ref) => {
-    const [focused, setFocused] = React.useState(false);
-    
-    const isValid = !errorMessage;
-    const borderColor = focused ? colors.GREYISH_BROWN : colors.WARM_GREY;
-    const borderBottomColor = isValid ? borderColor : colors.BUBBLE_GUM;
+  ({errorMessage, ...props}, ref) => {
+    const [focused, setFocused] = React.useState(false)
+
+    const isValid = !errorMessage
+    const borderColor = focused ? colors.GREYISH_BROWN : colors.WARM_GREY
+    const borderBottomColor = isValid ? borderColor : colors.BUBBLE_GUM
 
     return (
       <View style={styles.container}>
@@ -27,20 +21,20 @@ export const BaseTextInput = forwardRef<TextInput, Props>(
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           ref={ref}
-          style={[styles.input, { borderBottomColor }]}
+          style={[styles.input, {borderBottomColor}]}
           placeholderTextColor={colors.WARM_GREY}
           {...props}
         />
         {errorMessage && <Text style={styles.error}>{errorMessage}</Text>}
       </View>
-    );
-  }
-);
+    )
+  },
+)
 
 const styles = StyleSheet.create({
   container: {
     marginVertical: 10,
-    width: "80%",
+    width: '80%',
   },
   input: {
     backgroundColor: colors.WHITE,
@@ -56,4 +50,4 @@ const styles = StyleSheet.create({
     color: colors.BUBBLE_GUM,
     fontSize: 14,
   },
-});
+})

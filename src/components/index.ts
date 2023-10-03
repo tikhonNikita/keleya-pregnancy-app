@@ -1,2 +1,2 @@
-export { Button } from './Button';
-export { EmailInput, useUncontrolledEmailInput } from './EmailInput';
+export {Button} from './Button'
+export {EmailInput, useUncontrolledEmailInput} from './EmailInput'
