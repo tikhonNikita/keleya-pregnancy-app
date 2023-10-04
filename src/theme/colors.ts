@@ -5,4 +5,6 @@ export const colors = {
   GREYISH_BROWN: '#4a4a4a',
   WARM_GREY: '#9b9b9b',
   BUBBLE_GUM: '#e97db5',
+  BLUE: '#007aff',
+  LIGHT_GREY: '#F2F2F2',
 }
