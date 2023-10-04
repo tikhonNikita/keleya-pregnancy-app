@@ -7,6 +7,8 @@ import {
   PasswordInput,
   usePasswordInput,
   useEmailInput,
+  AgreementForm,
+  useAgreementForm,
 } from '../../components'
 
 export const MainScreen = () => {
@@ -24,6 +26,14 @@ export const MainScreen = () => {
     getPasswordIfValid,
   } = usePasswordInput()
 
+  const {
+    termsAccepted,
+    privacyPolicyAccepted,
+    setPrivacyPolicyAccepted,
+    setTermsAccepted,
+    agreementAccepted,
+  } = useAgreementForm()
+
   const onPress = () => {
     const email = getEmailIfValid()
     const password = getPasswordIfValid()
@@ -35,7 +45,8 @@ export const MainScreen = () => {
     }
   }
 
-  const buttonIsDisabled = emailInputValue.length < 3 || !passwordInputValue
+  const buttonIsDisabled =
+    emailInputValue.length < 3 || !passwordInputValue || !agreementAccepted
 
   return (
     <View style={styles.container}>
@@ -43,10 +54,16 @@ export const MainScreen = () => {
         error={emailValidationError}
         onChangeText={handleInputChange}
       />
-      <View style={{height: 20}} />
+
       <PasswordInput
         onChangeText={handlePasswordChange}
         error={passwordValidationError}
+      />
+      <AgreementForm
+        termsAccepted={termsAccepted}
+        privacyPolicyAccepted={privacyPolicyAccepted}
+        onTermsChange={setTermsAccepted}
+        onPolicyChange={setPrivacyPolicyAccepted}
       />
 
       <Button title="Log in" onPress={onPress} disabled={buttonIsDisabled} />
@@ -57,6 +74,7 @@ export const MainScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
+    gap: 20,
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
