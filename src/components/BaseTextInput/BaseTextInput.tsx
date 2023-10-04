@@ -33,7 +33,6 @@ export const BaseTextInput = forwardRef<TextInput, Props>(
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 10,
     width: '80%',
   },
   input: {

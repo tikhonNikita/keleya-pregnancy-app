@@ -1,21 +1,41 @@
 import {StatusBar} from 'expo-status-bar'
 import {StyleSheet, View} from 'react-native'
 
-import {Button, EmailInput, useUncontrolledEmailInput} from '../../components'
-import {AntDesign} from '@expo/vector-icons'
+import {
+  Button,
+  EmailInput,
+  PasswordInput,
+  usePasswordInput,
+  useEmailInput,
+} from '../../components'
 
 export const MainScreen = () => {
-  const {emailValidationError, handleInputChange, getEmailIfValid} =
-    useUncontrolledEmailInput()
+  const {
+    emailValidationError,
+    handleInputChange,
+    getEmailIfValid,
+    emailInputValue,
+  } = useEmailInput()
+
+  const {
+    passwordInputValue,
+    passwordValidationError,
+    handlePasswordChange,
+    getPasswordIfValid,
+  } = usePasswordInput()
 
   const onPress = () => {
     const email = getEmailIfValid()
-    if (email) {
+    const password = getPasswordIfValid()
+    if (email && password) {
       console.log('VALID', email)
+      console.log('VALID_Password', password)
     } else {
       console.log('INVALID')
     }
   }
+
+  const buttonIsDisabled = emailInputValue.length < 3 || !passwordInputValue
 
   return (
     <View style={styles.container}>
@@ -23,9 +43,13 @@ export const MainScreen = () => {
         error={emailValidationError}
         onChangeText={handleInputChange}
       />
-      <AntDesign name="eye" size={24} color="black" />
-      <AntDesign name="eyeo" size={24} color="black" />
-      <Button title="Log in" onPress={onPress} />
+      <View style={{height: 20}} />
+      <PasswordInput
+        onChangeText={handlePasswordChange}
+        error={passwordValidationError}
+      />
+
+      <Button title="Log in" onPress={onPress} disabled={buttonIsDisabled} />
       <StatusBar style="auto" />
     </View>
   )

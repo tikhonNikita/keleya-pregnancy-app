@@ -1,13 +1,13 @@
 import React from 'react'
-import {Pressable, StyleSheet} from 'react-native'
+import {TouchableOpacity, ViewStyle} from 'react-native'
 import {AntDesign} from '@expo/vector-icons'
 
 type Props = {
-  // type of name prop is AntDesign
   name: React.ComponentProps<typeof AntDesign>['name']
   size?: number
   color?: string
   onPress: () => void
+  style?: ViewStyle
 }
 
 export const PressableIcon: React.FC<Props> = ({
@@ -15,16 +15,11 @@ export const PressableIcon: React.FC<Props> = ({
   size = 24,
   color = 'black',
   onPress,
+  style,
 }) => {
   return (
-    <Pressable onPress={onPress} style={styles.container}>
+    <TouchableOpacity onPress={onPress} style={style} activeOpacity={0.5}>
       <AntDesign name={name} size={size} color={color} />
-    </Pressable>
+    </TouchableOpacity>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-  },
-})

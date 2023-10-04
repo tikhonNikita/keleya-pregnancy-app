@@ -1,2 +1,3 @@
 export {Button} from './Button'
-export {EmailInput, useUncontrolledEmailInput} from './EmailInput'
+export {EmailInput, useEmailInput} from './EmailInput'
+export {PasswordInput, usePasswordInput} from './PasswordInput'

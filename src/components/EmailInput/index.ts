@@ -1,2 +1,2 @@
 export {EmailInput} from './EmailInput'
-export {useUncontrolledEmailInput} from './useUncontrolledEmailInput'
+export {useEmailInput} from './useEmailInput'

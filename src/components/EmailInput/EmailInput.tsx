@@ -7,7 +7,7 @@ type Props = TextInputProps & {
   error?: string
 }
 
-export const EmailInput = forwardRef<TextInput, Props>((props, ref) => {
+const _EmailInput = forwardRef<TextInput, Props>((props, ref) => {
   const {error, ...rest} = props
 
   return (
@@ -23,3 +23,5 @@ export const EmailInput = forwardRef<TextInput, Props>((props, ref) => {
     />
   )
 })
+
+export const EmailInput = React.memo(_EmailInput)
