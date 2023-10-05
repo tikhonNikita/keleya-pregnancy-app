@@ -1,13 +1,7 @@
 import {StyleSheet, View} from 'react-native'
 
-import {TitleText} from '../../components'
-
 export const MainScreen = () => {
-  return (
-    <View style={styles.container}>
-      <TitleText text="Welcome to the Keleya Challenge!" />
-    </View>
-  )
+  return <View style={styles.container} />
 }
 
 const styles = StyleSheet.create({

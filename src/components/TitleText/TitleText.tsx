@@ -2,7 +2,7 @@ import React from 'react'
 import {StyleSheet, Text} from 'react-native'
 import {colors} from '../../theme'
 
-interface Props {
+type Props = {
   text: string
 }
 
