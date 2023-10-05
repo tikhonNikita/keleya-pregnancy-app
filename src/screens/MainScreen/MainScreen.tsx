@@ -1,11 +1,11 @@
 import {StyleSheet, View} from 'react-native'
 
-import {StepIndicator} from '../../components'
+import {WorkoutAmountPicker} from '../../components'
 
 export const MainScreen = () => {
   return (
     <View style={styles.container}>
-      <StepIndicator numberOfSteps={3} currentStep={1} />
+      <WorkoutAmountPicker onValueChange={(val) => console.log('value', val)} />
     </View>
   )
 }
