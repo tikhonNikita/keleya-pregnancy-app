@@ -5,7 +5,14 @@ const isEmailValid = (email: string): boolean => {
   return emailRegex.test(email)
 }
 
-export const useEmailInput = () => {
+type UseEmailInput = {
+  emailInputValue: string
+  emailValidationError: string
+  handleInputChange: (value: string) => void
+  getEmailIfValid: () => string | null
+}
+
+export const useEmailInput = (): UseEmailInput => {
   const [emailInputValue, setEmailInputValue] = useState('')
   const [emailValidationError, setEmailValidationError] = useState('')
 

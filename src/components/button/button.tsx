@@ -11,14 +11,16 @@ type Props = {
 }
 
 const _Button: React.FC<Props> = ({title, onPress, disabled, errorMessage}) => {
-  const backgroundColor = disabled ? colors.WARM_GREY : colors.PALE_TEAL
+  const buttonDisabled = disabled || !!errorMessage
+  const backgroundColor = buttonDisabled ? colors.WARM_GREY : colors.PALE_TEAL
+
   return (
     <View style={styles.buttonContainer}>
       {errorMessage && <Text style={styles.error}>{errorMessage}</Text>}
       <TouchableOpacity
         style={[styles.button, {backgroundColor}]}
         onPress={onPress}
-        disabled={disabled}>
+        disabled={buttonDisabled}>
         <Text style={styles.text}>{title}</Text>
       </TouchableOpacity>
     </View>

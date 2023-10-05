@@ -1,18 +1,30 @@
 import {StyleSheet, View} from 'react-native'
 
-import {useState} from 'react'
-import {Button, NameInput} from '../../components'
+import {Button, NameInput, useNameInput} from '../../components'
 
 export const MainScreen = () => {
-  const [name, setName] = useState('')
+  const {
+    nameInputValue,
+    nameValidationError,
+    handleNameChange,
+    getNameIfValid,
+  } = useNameInput()
+
+  const onPress = () => {
+    const inputValue = getNameIfValid()
+    if (inputValue) {
+      console.log(inputValue + ' was submitted')
+    }
+  }
 
   return (
     <View style={styles.container}>
-      <NameInput onChangeText={setName} />
+      <NameInput onChangeText={handleNameChange} />
       <Button
-        onPress={() => console.log(name + ' was submitted')}
+        errorMessage={nameValidationError}
+        onPress={onPress}
         title="Submit"
-        disabled={name.length < 2}
+        disabled={nameInputValue.length < 2}
       />
     </View>
   )

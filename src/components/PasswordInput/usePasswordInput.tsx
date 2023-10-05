@@ -9,9 +9,16 @@ type Props = {
   withStrengthValidation?: boolean
 }
 
+type UsePasswordInput = {
+  passwordInputValue: string
+  passwordValidationError: string
+  handlePasswordChange: (value: string) => void
+  getPasswordIfValid: () => string | null
+}
+
 export const usePasswordInput = ({
   withStrengthValidation = false,
-}: Props = {}) => {
+}: Props = {}): UsePasswordInput => {
   const [passwordInputValue, setPasswordInputValue] = useState('')
 
   const [passwordValidationError, setPasswordValidationError] = useState('')
