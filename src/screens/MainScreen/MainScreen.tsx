@@ -1,7 +1,13 @@
 import {StyleSheet, View} from 'react-native'
 
+import {StepIndicator} from '../../components'
+
 export const MainScreen = () => {
-  return <View style={styles.container} />
+  return (
+    <View style={styles.container}>
+      <StepIndicator numberOfSteps={3} currentStep={1} />
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
