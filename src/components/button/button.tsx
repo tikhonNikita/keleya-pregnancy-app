@@ -1,6 +1,12 @@
 // react native button component
 import React from 'react'
-import {TouchableOpacity, StyleSheet, Text, View} from 'react-native'
+import {
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  View,
+  ActivityIndicator,
+} from 'react-native'
 import {colors} from '../../theme'
 
 type Props = {
@@ -8,9 +14,16 @@ type Props = {
   onPress: () => void
   disabled?: boolean
   errorMessage?: string
+  loading?: boolean
 }
 
-const _Button: React.FC<Props> = ({title, onPress, disabled, errorMessage}) => {
+const _Button: React.FC<Props> = ({
+  title,
+  onPress,
+  disabled,
+  errorMessage,
+  loading = false,
+}) => {
   const buttonDisabled = disabled || !!errorMessage
   const backgroundColor = buttonDisabled ? colors.WARM_GREY : colors.PALE_TEAL
   const margin = errorMessage ? 10 : 0
@@ -19,10 +32,15 @@ const _Button: React.FC<Props> = ({title, onPress, disabled, errorMessage}) => {
     <View style={styles.buttonContainer}>
       {errorMessage && <Text style={styles.error}>{errorMessage}</Text>}
       <TouchableOpacity
+        activeOpacity={0.5}
         style={[styles.button, {backgroundColor, margin}]}
         onPress={onPress}
-        disabled={buttonDisabled}>
-        <Text style={styles.text}>{title}</Text>
+        disabled={buttonDisabled || loading}>
+        {loading ? (
+          <ActivityIndicator size={'small'} color={colors.WHITE} />
+        ) : (
+          <Text style={styles.text}>{title}</Text>
+        )}
       </TouchableOpacity>
     </View>
   )

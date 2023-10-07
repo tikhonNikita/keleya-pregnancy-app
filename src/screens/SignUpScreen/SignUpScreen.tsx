@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {StyleSheet, View, Image} from 'react-native'
 import {colors} from '../../theme'
 import {
@@ -12,6 +12,7 @@ import {
   usePasswordInput,
 } from '../../components'
 import {useSafeAreaInsets} from 'react-native-safe-area-context'
+import {createAccount} from '../../api'
 
 type SignUpScreenProps = {}
 
@@ -45,12 +46,21 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = () => {
     setPrivacyPolicyAccepted,
   } = useAgreementForm()
 
-  const onSignUp = () => {
+  const [loading, setLoading] = useState(false)
+
+  const onSignUp = async () => {
     const email = getEmailIfValid()
     const password = getPasswordIfValid()
 
     if (email && password) {
-      console.log('Sign Up', {email, password})
+      setLoading(true)
+      try {
+        await createAccount(email, password)
+      } catch (e) {
+        console.log(e)
+      } finally {
+        setLoading(false)
+      }
     }
   }
 
@@ -82,7 +92,12 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = () => {
           onPolicyChange={setPrivacyPolicyAccepted}
         />
       </View>
-      <Button title="Sign Up" onPress={onSignUp} disabled={buttonIsDisabled} />
+      <Button
+        loading={loading}
+        title="Sign Up"
+        onPress={onSignUp}
+        disabled={buttonIsDisabled}
+      />
     </View>
   )
 }
