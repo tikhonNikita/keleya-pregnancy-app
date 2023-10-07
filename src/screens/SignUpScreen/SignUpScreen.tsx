@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.WHITE,
   },
   inputForm: {
-    flex: 1.15,
+    flex: 1.2,
     gap: 10,
     width: '100%',
     justifyContent: 'flex-start',

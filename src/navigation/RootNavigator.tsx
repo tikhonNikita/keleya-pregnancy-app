@@ -1,7 +1,9 @@
 import React from 'react'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
+
 import {InitialScreen, SignUpScreen} from '../screens'
 import {OnboardingProvider} from '../state'
+import {BackButton} from './BackButton'
 
 export type RootStackParamList = {
   InitialScreen: undefined
@@ -25,7 +27,9 @@ export const RootNavigator = () => {
           name="SignUpScreen"
           component={SignUpScreen}
           options={{
-            headerShown: false,
+            headerTransparent: true,
+            headerLeft: BackButton,
+            title: '',
           }}
         />
       </Stack.Navigator>
