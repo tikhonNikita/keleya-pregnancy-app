@@ -6,6 +6,7 @@ import {
   Text,
   View,
   ActivityIndicator,
+  ViewStyle,
 } from 'react-native'
 import {colors} from '../../theme'
 
@@ -15,6 +16,7 @@ type Props = {
   disabled?: boolean
   errorMessage?: string
   loading?: boolean
+  style?: ViewStyle
 }
 
 const _Button: React.FC<Props> = ({
@@ -22,6 +24,7 @@ const _Button: React.FC<Props> = ({
   onPress,
   disabled,
   errorMessage,
+  style,
   loading = false,
 }) => {
   const buttonDisabled = disabled || !!errorMessage
@@ -29,7 +32,7 @@ const _Button: React.FC<Props> = ({
   const margin = errorMessage ? 10 : 0
 
   return (
-    <View style={styles.buttonContainer}>
+    <View style={[styles.buttonContainer, style]}>
       {errorMessage && <Text style={styles.error}>{errorMessage}</Text>}
       <TouchableOpacity
         activeOpacity={0.5}

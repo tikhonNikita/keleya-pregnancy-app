@@ -13,15 +13,21 @@ import {
 } from '../../components'
 import {useSafeAreaInsets} from 'react-native-safe-area-context'
 import {useOnboarding} from '../../state'
-
-type SignUpScreenProps = {}
+import {NavigationProp, useNavigation} from '@react-navigation/native'
+import {RootStackParamList} from '../../navigation/RootNavigator'
 
 const backgroundImage = require('../../../assets/authentication-background-image.jpg')
 
 const title = 'Add your details to set up\n an account'
 
-export const SignUpScreen: React.FC<SignUpScreenProps> = () => {
+type SignUpScreenNavigationProp = NavigationProp<
+  RootStackParamList,
+  'SignUpScreen'
+>
+
+export const SignUpScreen: React.FC = () => {
   const {bottom} = useSafeAreaInsets()
+  const navigation = useNavigation<SignUpScreenNavigationProp>()
   const paddingBottom = bottom > 0 ? bottom : 20
 
   const {
@@ -55,6 +61,7 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = () => {
     if (email && password) {
       setEmail(email)
       setPassword(password)
+      navigation.navigate('NameScreen')
     }
   }
 

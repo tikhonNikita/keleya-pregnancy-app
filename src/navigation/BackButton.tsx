@@ -4,6 +4,9 @@ import {useNavigation} from '@react-navigation/native'
 
 export const BackButton = (props: HeaderBackButtonProps) => {
   const navigation = useNavigation()
+  if (!props.canGoBack) {
+    return null
+  }
   return (
     <PressableIcon
       name={'arrowleft'}
