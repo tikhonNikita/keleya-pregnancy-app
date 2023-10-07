@@ -37,5 +37,6 @@ const styles = StyleSheet.create({
   },
   inactiveCircle: {
     backgroundColor: colors.LIGHT_TEAL,
+    opacity: 0.7,
   },
 })

@@ -13,12 +13,13 @@ type Props = {
 const _Button: React.FC<Props> = ({title, onPress, disabled, errorMessage}) => {
   const buttonDisabled = disabled || !!errorMessage
   const backgroundColor = buttonDisabled ? colors.WARM_GREY : colors.PALE_TEAL
+  const margin = errorMessage ? 10 : 0
 
   return (
     <View style={styles.buttonContainer}>
       {errorMessage && <Text style={styles.error}>{errorMessage}</Text>}
       <TouchableOpacity
-        style={[styles.button, {backgroundColor}]}
+        style={[styles.button, {backgroundColor, margin}]}
         onPress={onPress}
         disabled={buttonDisabled}>
         <Text style={styles.text}>{title}</Text>
@@ -39,7 +40,6 @@ const styles = StyleSheet.create({
     backgroundColor: colors.PALE_TEAL,
     borderRadius: 8,
     padding: 10,
-    margin: 10,
     height: 50,
     alignItems: 'center',
     justifyContent: 'center',
