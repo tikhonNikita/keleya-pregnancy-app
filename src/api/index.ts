@@ -1,2 +1,1 @@
-export {createAccount} from './createAccount'
-export {senOnboardingData} from './senOnboardingData'
+export {sendOnboardingData} from './sendOnboardingData'

@@ -34,7 +34,6 @@ export const usePasswordInput = ({
   )
 
   const getPasswordIfValid = useCallback(() => {
-    console.log('VALIDATE PASSWORD', passwordInputValue)
     if (passwordInputValue === '') {
       setPasswordValidationError('Password is required')
       return null
