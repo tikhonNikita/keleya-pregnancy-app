@@ -4,6 +4,8 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context'
 
 import {colors} from '../../theme'
 import {Button, PressableText, StepIndicator, TitleText} from '../../components'
+import {NavigationProp, useNavigation} from '@react-navigation/native'
+import {RootStackParamList} from '../../navigation/RootNavigator'
 
 const backgroundSource = require('../../../assets/first-intro-image.png')
 
@@ -15,8 +17,15 @@ const TITLE = 'For fit and relaxed pregnancy'
 const LOGIN_TEXT = 'Or login'
 const GET_STARTED_TEXT = 'Get Started'
 
+type InitialScreenNavigationProp = NavigationProp<
+  RootStackParamList,
+  'InitialScreen'
+>
+
 export const InitialScreen = () => {
   const {top, bottom} = useSafeAreaInsets()
+
+  const navigation = useNavigation<InitialScreenNavigationProp>()
 
   const marginBottom = bottom > 0 ? bottom : 20
 
@@ -31,7 +40,7 @@ export const InitialScreen = () => {
         <Button
           title={GET_STARTED_TEXT}
           onPress={() => {
-            console.log('Get Started')
+            navigation.navigate('SignUpScreen')
           }}
         />
         <PressableText

@@ -1,10 +1,13 @@
-// React Native stack navigator with one screen
-
 import React from 'react'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
-import {InitialScreen} from '../screens'
+import {InitialScreen, SignUpScreen} from '../screens'
 
-const Stack = createNativeStackNavigator()
+export type RootStackParamList = {
+  InitialScreen: undefined
+  SignUpScreen: undefined
+}
+
+const Stack = createNativeStackNavigator<RootStackParamList>()
 
 export const RootNavigator = () => {
   return (
@@ -12,6 +15,13 @@ export const RootNavigator = () => {
       <Stack.Screen
         name="InitialScreen"
         component={InitialScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="SignUpScreen"
+        component={SignUpScreen}
         options={{
           headerShown: false,
         }}

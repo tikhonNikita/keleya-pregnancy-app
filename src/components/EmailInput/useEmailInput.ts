@@ -8,7 +8,7 @@ const isEmailValid = (email: string): boolean => {
 type UseEmailInput = {
   emailInputValue: string
   emailValidationError: string
-  handleInputChange: (value: string) => void
+  handleEmailInputChange: (value: string) => void
   getEmailIfValid: () => string | null
 }
 
@@ -16,7 +16,7 @@ export const useEmailInput = (): UseEmailInput => {
   const [emailInputValue, setEmailInputValue] = useState('')
   const [emailValidationError, setEmailValidationError] = useState('')
 
-  const handleInputChange = useCallback(
+  const handleEmailInputChange = useCallback(
     (text: string) => {
       if (emailValidationError !== '') {
         setEmailValidationError('')
@@ -41,7 +41,7 @@ export const useEmailInput = (): UseEmailInput => {
   return {
     emailInputValue,
     emailValidationError,
-    handleInputChange,
+    handleEmailInputChange,
     getEmailIfValid,
   }
 }

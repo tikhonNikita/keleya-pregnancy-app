@@ -1,7 +1,7 @@
 import {useCallback, useState} from 'react'
 
 const isValidPassword = (password: string) => {
-  const regex = /^(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/
+  const regex = /^(?=.*[!@#$%^&*]).{6,}$/
   return regex.test(password)
 }
 
@@ -34,12 +34,13 @@ export const usePasswordInput = ({
   )
 
   const getPasswordIfValid = useCallback(() => {
+    console.log('VALIDATE PASSWORD', passwordInputValue)
     if (passwordInputValue === '') {
       setPasswordValidationError('Password is required')
       return null
     } else if (withStrengthValidation && !isValidPassword(passwordInputValue)) {
       setPasswordValidationError(
-        'Password must be at least 6 characters and contain at least one special symbol',
+        'Password must be at least 6 characters with a special symbol',
       )
       return null
     } else {
