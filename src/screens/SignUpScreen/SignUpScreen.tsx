@@ -1,5 +1,7 @@
 import React from 'react'
 import {StyleSheet, View, Image} from 'react-native'
+import {NavigationProp, useNavigation} from '@react-navigation/native'
+
 import {colors} from '../../theme'
 import {
   AgreementForm,
@@ -11,10 +13,9 @@ import {
   useEmailInput,
   usePasswordInput,
 } from '../../components'
-import {useSafeAreaInsets} from 'react-native-safe-area-context'
 import {useOnboarding} from '../../state'
-import {NavigationProp, useNavigation} from '@react-navigation/native'
 import {RootStackParamList} from '../../navigation/RootNavigator'
+import {useBottomPadding} from '../../utils'
 
 const backgroundImage = require('../../../assets/authentication-background-image.jpg')
 
@@ -26,9 +27,8 @@ type SignUpScreenNavigationProp = NavigationProp<
 >
 
 export const SignUpScreen: React.FC = () => {
-  const {bottom} = useSafeAreaInsets()
   const navigation = useNavigation<SignUpScreenNavigationProp>()
-  const paddingBottom = bottom > 0 ? bottom : 20
+  const paddingBottom = useBottomPadding()
 
   const {
     emailInputValue,

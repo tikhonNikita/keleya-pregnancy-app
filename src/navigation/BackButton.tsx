@@ -7,14 +7,12 @@ export const BackButton = (props: HeaderBackButtonProps) => {
   if (!props.canGoBack) {
     return null
   }
-  return (
-    <PressableIcon
-      name={'arrowleft'}
-      onPress={() => {
-        if (props.canGoBack) {
-          navigation.goBack()
-        }
-      }}
-    />
-  )
+
+  const onGoBack = () => {
+    if (props.canGoBack) {
+      navigation.goBack()
+    }
+  }
+
+  return <PressableIcon name={'arrowleft'} onPress={onGoBack} />
 }

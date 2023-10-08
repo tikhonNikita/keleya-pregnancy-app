@@ -6,12 +6,13 @@ import {
   KeyboardAvoidingView,
 } from 'react-native'
 import {NavigationProp, useNavigation} from '@react-navigation/native'
+import {LinearGradient} from 'expo-linear-gradient'
+
 import {Button, NameInput, TitleText, useNameInput} from '../../components'
 import {useOnboarding} from '../../state'
-import {RootStackParamList} from '../RootNavigator'
+import {RootStackParamList} from '../../navigation/RootNavigator'
 import {colors} from '../../theme'
-import {LinearGradient} from 'expo-linear-gradient'
-import {useSafeAreaInsets} from 'react-native-safe-area-context'
+import {useBottomPadding} from '../../utils'
 
 type NameScreenNavigationProp = NavigationProp<RootStackParamList, 'NameScreen'>
 
@@ -23,11 +24,9 @@ const image = require('../../../assets/couch_smile.jpg')
 const gradient = ['rgba(233,228,229,1)', colors.WHITE]
 
 export const NameScreen: React.FC = () => {
-  const {bottom} = useSafeAreaInsets()
-
   const navigation = useNavigation<NameScreenNavigationProp>()
 
-  const paddingBottom = bottom > 0 ? bottom : 20
+  const paddingBottom = useBottomPadding()
 
   const {setName} = useOnboarding()
 
