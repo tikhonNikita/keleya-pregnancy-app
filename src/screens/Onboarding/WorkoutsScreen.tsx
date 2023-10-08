@@ -33,7 +33,7 @@ export const WorkoutsScreen: React.FC = () => {
 
   const {setWorkoutsPerWeek} = useOnboarding()
 
-  const handleNextPress = () => {
+  const onNextPress = () => {
     setWorkoutsPerWeek(numberOfWorkouts)
     navigation.navigate('NotificationsScreen')
   }
@@ -55,7 +55,7 @@ export const WorkoutsScreen: React.FC = () => {
       <Button
         style={{paddingBottom: paddingBottom}}
         title="Continue"
-        onPress={handleNextPress}
+        onPress={onNextPress}
       />
     </View>
   )

@@ -37,7 +37,7 @@ export const NameScreen: React.FC = () => {
     getNameIfValid,
   } = useNameInput()
 
-  const handleNextPress = () => {
+  const onContinuePress = () => {
     const name = getNameIfValid()
     if (name) {
       setName(name)
@@ -62,7 +62,7 @@ export const NameScreen: React.FC = () => {
         style={{paddingBottom: paddingBottom}}
         disabled={isDisabled}
         title="Continue"
-        onPress={handleNextPress}
+        onPress={onContinuePress}
         errorMessage={nameValidationError}
       />
     </View>
