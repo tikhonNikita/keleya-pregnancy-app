@@ -25,7 +25,13 @@ Application emulating simple onboarding process
 ## Final thoughts
 
  -  The screenshot test for iOS is not implemented as there is an issue with running `xcrun simctl status_bar ...` on iOS versions > 15. Further debugging would take more time and installing later emulators so decided to skip it due to the timeline. We need to use `simctl` to make sure we always have static StatusBar
- - The app is using Expo as the most convenient way to test/deliver small apps. When needed I get access to native code with `expo prebuild` command as I do with Detox. Nowadays it convenient way to start an app as we can do any native stuff if we need. Besides that I utilized EAS build and integrated Detox text to the build pipeline
- - Regarding the implementation of Onboarding I had thoughts about implementing it with ViewPager with some animation and swipe but decided to stick to Stack Navigator as the screens provided look like separate screens.
+ - The app is using Expo as the most convenient way to test/deliver small apps. I get access to native code with `expo prebuild` command as I do with Detox. Nowadays it convenient way to start an app as we can do any native stuff if we need. Besides that, I utilized EAS build and integrated Detox text into the build pipeline
+ - Regarding the implementation of Onboarding I had thoughts about implementing it with ViewPager with some animation and swipe. Still, I decided to stick to Stack Navigator as the screens provided look like separate screens.
  - One image provided didn't include a blur effect for the transition so I used LinearGradient.
  - Also I included some API mocks and loading functionality for buttons to emulate network requests
+
+## Small demo
+
+
+https://github.com/tikhonNikita/keleya-pregnancy-app/assets/29158136/f3b2e376-60e8-4c7f-9e18-cdc938bf029c
+
