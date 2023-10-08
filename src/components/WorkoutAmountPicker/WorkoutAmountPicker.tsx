@@ -5,6 +5,7 @@ import {Picker} from '@react-native-picker/picker'
 type Props = {
   onValueChange: (value: number) => void
   locale?: 'en' | 'de'
+  initialValue?: number
 }
 
 const TRANSLATIONS = {
@@ -20,14 +21,14 @@ const TRANSLATIONS = {
   },
 }
 
-const DEFAULT_VALUE = 3
 const MAX = 7
 
 export const WorkoutAmountPicker: React.FC<Props> = ({
+  initialValue,
   onValueChange,
   locale = 'en',
 }) => {
-  const [value, setValue] = useState(DEFAULT_VALUE)
+  const [value, setValue] = useState(initialValue)
 
   const {onceAWeek, timesAWeek} = TRANSLATIONS[locale]
 

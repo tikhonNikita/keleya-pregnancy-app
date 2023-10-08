@@ -6,6 +6,7 @@ import {
   SignUpScreen,
   NameScreen,
   DueDateScreen,
+  WorkoutsScreen,
 } from '../screens'
 import {OnboardingProvider} from '../state'
 import {BackButton} from './BackButton'
@@ -30,7 +31,7 @@ const OnboardingOptions = {
 export const RootNavigator = () => {
   return (
     <OnboardingProvider>
-      <Stack.Navigator initialRouteName="NameScreen">
+      <Stack.Navigator initialRouteName="WorkoutsScreen">
         <Stack.Screen
           name="InitialScreen"
           component={InitialScreen}
@@ -51,6 +52,11 @@ export const RootNavigator = () => {
         <Stack.Screen
           name="DueDateScreen"
           component={DueDateScreen}
+          options={OnboardingOptions}
+        />
+        <Stack.Screen
+          name="WorkoutsScreen"
+          component={WorkoutsScreen}
           options={OnboardingOptions}
         />
       </Stack.Navigator>
