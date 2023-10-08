@@ -7,6 +7,7 @@ import {useOnboarding} from '../../state'
 import {RootStackParamList} from '../../navigation/RootNavigator'
 import {colors} from '../../theme'
 import {useBottomPadding} from '../../utils'
+import {useLocalization} from '../../../localization'
 
 type DueDateScreenNavigationProp = NavigationProp<
   RootStackParamList,
@@ -15,10 +16,8 @@ type DueDateScreenNavigationProp = NavigationProp<
 
 const image = require('../../../assets/due-date-background-image.jpg')
 
-const dueDateTitle = (name: string) => `When is your baby due, ${name}?`
-const continueText = 'Continue'
-
 export const DueDateScreen: React.FC = () => {
+  const {i18n} = useLocalization()
   const navigation = useNavigation<DueDateScreenNavigationProp>()
   const [date, setDate] = useState<Date | undefined>()
 
@@ -37,13 +36,13 @@ export const DueDateScreen: React.FC = () => {
     <View style={styles.container}>
       <Image source={image} style={styles.image} resizeMode="cover" />
       <View style={styles.form}>
-        <TitleText text={dueDateTitle(name)} style={styles.title} />
+        <TitleText text={i18n.t('datePrompt', {name})} style={styles.title} />
         <DateInput selectedDate={date} onSelectDate={setDate} />
       </View>
       <Button
         disabled={!date}
         style={{paddingBottom: paddingBottom}}
-        title={continueText}
+        title={i18n.t('continue')}
         onPress={handleNextPress}
       />
     </View>

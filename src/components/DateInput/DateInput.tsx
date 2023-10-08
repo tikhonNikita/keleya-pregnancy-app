@@ -3,6 +3,7 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 import DateTimePickerModal from 'react-native-modal-datetime-picker'
 
 import {colors} from '../../theme'
+import {useLocalization} from '../../../localization'
 
 interface Props {
   selectedDate: Date | undefined
@@ -11,6 +12,7 @@ interface Props {
 
 export const DateInput: React.FC<Props> = ({selectedDate, onSelectDate}) => {
   const [showPicker, setShowPicker] = useState(false)
+  const {i18n} = useLocalization()
 
   const handlePress = () => {
     setShowPicker(true)
@@ -28,11 +30,11 @@ export const DateInput: React.FC<Props> = ({selectedDate, onSelectDate}) => {
   }
 
   const inputText =
-    selectedDate?.toLocaleDateString('en-US', {
+    selectedDate?.toLocaleDateString(i18n.locale, {
       month: 'short',
       day: 'numeric',
       year: 'numeric',
-    }) ?? 'Pick a date'
+    }) ?? i18n.t('selectDate')
 
   return (
     <TouchableOpacity onPress={handlePress} style={styles.container}>
@@ -42,9 +44,12 @@ export const DateInput: React.FC<Props> = ({selectedDate, onSelectDate}) => {
       <DateTimePickerModal
         date={selectedDate}
         minimumDate={new Date()}
+        locale={i18n.locale}
         isVisible={showPicker}
         mode="date"
         display="spinner"
+        confirmTextIOS={i18n.t('confirm')}
+        cancelTextIOS={i18n.t('cancel')}
         onConfirm={handleDateChange}
         onCancel={handleCancel}
       />

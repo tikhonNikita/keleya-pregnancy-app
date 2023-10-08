@@ -1,4 +1,5 @@
 import {useCallback, useState} from 'react'
+import {useLocalization} from '../../../localization'
 
 const isEmailValid = (email: string): boolean => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -13,6 +14,7 @@ type UseEmailInput = {
 }
 
 export const useEmailInput = (): UseEmailInput => {
+  const {i18n} = useLocalization()
   const [emailInputValue, setEmailInputValue] = useState('')
   const [emailValidationError, setEmailValidationError] = useState('')
 
@@ -28,15 +30,15 @@ export const useEmailInput = (): UseEmailInput => {
 
   const getEmailIfValid = useCallback(() => {
     if (emailInputValue === '') {
-      setEmailValidationError('Email is required')
+      setEmailValidationError(i18n.t('emailRequired'))
       return null
     } else if (!isEmailValid(emailInputValue)) {
-      setEmailValidationError('Invalid email format')
+      setEmailValidationError(i18n.t('invalidEmail'))
       return null
     } else {
       return emailInputValue
     }
-  }, [emailInputValue])
+  }, [emailInputValue, i18n])
 
   return {
     emailInputValue,

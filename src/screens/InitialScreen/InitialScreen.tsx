@@ -6,16 +6,13 @@ import {colors} from '../../theme'
 import {Button, PressableText, StepIndicator, TitleText} from '../../components'
 import {NavigationProp, useNavigation} from '@react-navigation/native'
 import {RootStackParamList} from '../../navigation/RootNavigator'
+import {useLocalization} from '../../../localization'
 
 const backgroundSource = require('../../../assets/first-intro-image.png')
 
 const logoSource = require('../../../assets/keleya-logo.png')
 
 const TOP_OFFSET = 50
-
-const TITLE = 'For fit and relaxed pregnancy'
-const LOGIN_TEXT = 'Or login'
-const GET_STARTED_TEXT = 'Get Started'
 
 type InitialScreenNavigationProp = NavigationProp<
   RootStackParamList,
@@ -27,6 +24,8 @@ export const InitialScreen = () => {
 
   const navigation = useNavigation<InitialScreenNavigationProp>()
 
+  const {i18n} = useLocalization()
+
   const marginBottom = bottom > 0 ? bottom : 20
 
   return (
@@ -36,18 +35,18 @@ export const InitialScreen = () => {
       testID="initialScreenRoot">
       <View style={[styles.logoContainer, {top: top + TOP_OFFSET}]}>
         <Image source={logoSource} style={styles.logo} />
-        <TitleText text={TITLE} style={styles.logoText} />
+        <TitleText text={i18n.t('initScreenTitle')} style={styles.logoText} />
       </View>
 
       <View style={[styles.actionsSection, {marginBottom}]}>
         <Button
-          title={GET_STARTED_TEXT}
+          title={i18n.t('getStarted')}
           onPress={() => {
             navigation.navigate('SignUpScreen')
           }}
         />
         <PressableText
-          text={LOGIN_TEXT}
+          text={i18n.t('orLogIn')}
           onPress={() => {
             navigation.navigate('SignInScreen')
           }}

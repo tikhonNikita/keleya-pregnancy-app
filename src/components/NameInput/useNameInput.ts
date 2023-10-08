@@ -1,4 +1,5 @@
 import {useCallback, useState} from 'react'
+import {useLocalization} from '../../../localization'
 
 type UseNameInput = {
   nameInputValue: string
@@ -13,6 +14,7 @@ const nameIsValid = (name: string): boolean => {
 }
 
 export const useNameInput = (): UseNameInput => {
+  const {i18n} = useLocalization()
   const [nameInputValue, setNameInputValue] = useState('')
   const [nameValidationError, setNameValidationError] = useState('')
 
@@ -28,10 +30,10 @@ export const useNameInput = (): UseNameInput => {
 
   const getNameIfValid = (): string | null => {
     if (nameInputValue.trim().length === 0) {
-      setNameValidationError('Name is required')
+      setNameValidationError(i18n.t('nameRequired'))
       return null
     } else if (!nameIsValid(nameInputValue)) {
-      setNameValidationError('Invalid name format')
+      setNameValidationError(i18n.t('invalidName'))
       return null
     } else {
       setNameValidationError('')

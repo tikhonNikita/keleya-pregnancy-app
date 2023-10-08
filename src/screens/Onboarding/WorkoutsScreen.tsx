@@ -8,6 +8,7 @@ import {useOnboarding} from '../../state'
 import {RootStackParamList} from '../../navigation/RootNavigator'
 import {colors} from '../../theme'
 import {useBottomPadding} from '../../utils'
+import {useLocalization} from '../../../localization'
 
 type WorkoutsScreenNavigationProp = NavigationProp<
   RootStackParamList,
@@ -18,12 +19,10 @@ const image = require('../../../assets/workout-goal-background-image.jpg')
 
 const TOP_OFFSET = 50
 
-const title = 'How many times a week do\n you want to be active?'
-const continueText = 'Continue'
-
 const DEFAULT_NUMBER_OF_WORKOUTS = 3
 
 export const WorkoutsScreen: React.FC = () => {
+  const {i18n} = useLocalization()
   const navigation = useNavigation<WorkoutsScreenNavigationProp>()
   const [numberOfWorkouts, setNumberOfWorkouts] = useState(
     DEFAULT_NUMBER_OF_WORKOUTS,
@@ -43,7 +42,7 @@ export const WorkoutsScreen: React.FC = () => {
     <View style={styles.container}>
       <ImageBackground source={image} style={styles.image} resizeMode="cover">
         <TitleText
-          text={title}
+          text={i18n.t('workoutsPrompt')}
           style={[styles.title, {marginTop: top + TOP_OFFSET}]}
         />
       </ImageBackground>
@@ -55,7 +54,7 @@ export const WorkoutsScreen: React.FC = () => {
       </View>
       <Button
         style={{paddingBottom: paddingBottom}}
-        title={continueText}
+        title={i18n.t('continue')}
         onPress={onNextPress}
       />
     </View>

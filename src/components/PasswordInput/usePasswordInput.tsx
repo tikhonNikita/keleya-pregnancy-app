@@ -1,4 +1,5 @@
 import {useCallback, useState} from 'react'
+import {useLocalization} from '../../../localization'
 
 const isValidPassword = (password: string) => {
   const regex = /^(?=.*[!@#$%^&*]).{6,}$/
@@ -19,6 +20,7 @@ type UsePasswordInput = {
 export const usePasswordInput = ({
   withStrengthValidation = false,
 }: Props = {}): UsePasswordInput => {
+  const {i18n} = useLocalization()
   const [passwordInputValue, setPasswordInputValue] = useState('')
 
   const [passwordValidationError, setPasswordValidationError] = useState('')
@@ -35,18 +37,16 @@ export const usePasswordInput = ({
 
   const getPasswordIfValid = useCallback(() => {
     if (passwordInputValue === '') {
-      setPasswordValidationError('Password is required')
+      setPasswordValidationError(i18n.t('passwordRequired'))
       return null
     } else if (withStrengthValidation && !isValidPassword(passwordInputValue)) {
-      setPasswordValidationError(
-        'Password must be at least 6 characters with a special symbol',
-      )
+      setPasswordValidationError(i18n.t('passwordStrength'))
       return null
     } else {
       setPasswordValidationError('')
       return passwordInputValue
     }
-  }, [passwordInputValue, withStrengthValidation])
+  }, [i18n, passwordInputValue, withStrengthValidation])
 
   return {
     passwordInputValue,

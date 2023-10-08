@@ -4,8 +4,8 @@
       "@config-plugins/detox",
       "expo-localization"
     ],
-    "name": "keleya-pregnancy-app",
-    "slug": "keleya-pregnancy-app",
+    "name": "keleya",
+    "slug": "keleya",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

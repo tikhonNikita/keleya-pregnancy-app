@@ -13,19 +13,16 @@ import {useOnboarding} from '../../state'
 import {RootStackParamList} from '../../navigation/RootNavigator'
 import {colors} from '../../theme'
 import {useBottomPadding} from '../../utils'
+import {useLocalization} from '../../../localization'
 
 type NameScreenNavigationProp = NavigationProp<RootStackParamList, 'NameScreen'>
-
-const title =
-  "It's great that you're here! First things first, what should we\n call you?"
-
-const continueText = 'Continue'
 
 const image = require('../../../assets/couch_smile.jpg')
 
 const gradient = ['rgba(233,228,229,1)', colors.WHITE]
 
 export const NameScreen: React.FC = () => {
+  const {i18n} = useLocalization()
   const navigation = useNavigation<NameScreenNavigationProp>()
 
   const paddingBottom = useBottomPadding()
@@ -56,14 +53,14 @@ export const NameScreen: React.FC = () => {
       </ImageBackground>
 
       <KeyboardAvoidingView style={styles.inputForm} behavior="padding">
-        <TitleText text={title} style={styles.title} />
+        <TitleText text={i18n.t('namePrompt')} style={styles.title} />
         <NameInput onChangeText={handleNameChange} />
       </KeyboardAvoidingView>
 
       <Button
         style={{paddingBottom: paddingBottom}}
         disabled={isDisabled}
-        title={continueText}
+        title={i18n.t('continue')}
         onPress={onContinuePress}
         errorMessage={nameValidationError}
       />

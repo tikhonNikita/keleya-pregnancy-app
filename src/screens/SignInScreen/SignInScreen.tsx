@@ -15,10 +15,9 @@ import {
 import {RootStackParamList} from '../../navigation/RootNavigator'
 import {useBottomPadding} from '../../utils'
 import {signIn} from '../../api'
+import {useLocalization} from '../../../localization'
 
 const backgroundImage = require('../../../assets/authentication-background-image.jpg')
-
-const title = 'Welcome back!'
 
 type SignInScreenNavigationProp = NavigationProp<
   RootStackParamList,
@@ -26,10 +25,8 @@ type SignInScreenNavigationProp = NavigationProp<
 >
 const noop = () => {}
 
-const forgottenPasswordText = 'Have you forgotten your password?'
-const logIn = 'Log in'
-
 export const SignInScreen: React.FC = () => {
+  const {i18n} = useLocalization()
   const navigation = useNavigation<SignInScreenNavigationProp>()
   const paddingBottom = useBottomPadding()
   const [loading, setLoading] = useState(false)
@@ -78,7 +75,7 @@ export const SignInScreen: React.FC = () => {
     <View style={[styles.container, {paddingBottom}]}>
       <Image source={backgroundImage} style={styles.image} />
       <View style={styles.inputForm}>
-        <TitleText text={title} style={styles.title} />
+        <TitleText text={i18n.t('welcomeBack')} style={styles.title} />
         <EmailInput
           onChangeText={handleEmailInputChange}
           error={emailValidationError}
@@ -89,9 +86,9 @@ export const SignInScreen: React.FC = () => {
         />
       </View>
       <View style={styles.buttons}>
-        <PressableText text={forgottenPasswordText} onPress={noop} />
+        <PressableText text={i18n.t('forgotPassword')} onPress={noop} />
         <Button
-          title={logIn}
+          title={i18n.t('logIn')}
           onPress={onSignIn}
           disabled={buttonIsDisabled}
           loading={loading}

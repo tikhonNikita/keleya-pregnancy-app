@@ -1,12 +1,14 @@
 import React, {useCallback, useRef} from 'react'
 import {StyleSheet, TextInput, TextInputProps} from 'react-native'
 import {BaseTextInput} from '../BaseTextInput'
+import {useLocalization} from '../../../localization'
 
 type Props = TextInputProps & {
   onChangeText: (text: string) => void
 }
 
 const _NameInput: React.FC<Props> = ({onChangeText}) => {
+  const {i18n} = useLocalization()
   const inputRef = React.useRef<TextInput>(null)
   const inputValue = useRef('')
 
@@ -39,7 +41,7 @@ const _NameInput: React.FC<Props> = ({onChangeText}) => {
       ref={inputRef}
       onBlur={onBlur}
       onChangeText={handleInput}
-      placeholder={'Your Name'}
+      placeholder={i18n.t('yourName')}
       textAlign="center"
       inputMode="text"
       extraInputStyle={styles.input}

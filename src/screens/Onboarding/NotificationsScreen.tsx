@@ -7,16 +7,14 @@ import {Button, PressableText, TitleText} from '../../components'
 import {useOnboarding} from '../../state'
 import {colors} from '../../theme'
 import {useBottomPadding} from '../../utils'
+import {useLocalization} from '../../../localization'
 
 const image = require('../../../assets/notifications-background-image.jpg')
 
 const TOP_OFFSET = 25
 
-const title = 'Get notifications to boost\n your motivation'
-const buttonText = 'Allow notifications'
-const skipText = 'Skip'
-
 export const NotificationsScreen: React.FC = () => {
+  const {i18n} = useLocalization()
   const paddingBottom = useBottomPadding()
   const {top} = useSafeAreaInsets()
 
@@ -39,17 +37,17 @@ export const NotificationsScreen: React.FC = () => {
           color={colors.GREYISH_BROWN}
           style={styles.icon}
         />
-        <TitleText text={title} style={styles.title} />
+        <TitleText text={i18n.t('notificationsPrompt')} style={styles.title} />
       </View>
       <View style={styles.buttons}>
         <PressableText
-          text={skipText}
+          text={i18n.t('skip')}
           onPress={onSkipPress}
           color={colors.GREYISH_BROWN}
         />
         <Button
           style={{paddingBottom: paddingBottom}}
-          title={buttonText}
+          title={i18n.t('allowNotifications')}
           onPress={onAllowPress}
         />
       </View>
@@ -70,6 +68,7 @@ const styles = StyleSheet.create({
   notification: {
     alignItems: 'center',
     justifyContent: 'center',
+    width: '80%',
   },
   buttons: {
     gap: 30,

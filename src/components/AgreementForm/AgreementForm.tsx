@@ -2,6 +2,7 @@ import React, {useMemo} from 'react'
 import {StyleSheet, View, Text} from 'react-native'
 import {CheckboxWithText} from '../CheckboxWithText'
 import {LinkText} from '../LinkText'
+import {useLocalization} from '../../../localization'
 
 type Props = {
   termsAccepted: boolean
@@ -18,27 +19,30 @@ const _AgreementForm: React.FC<Props> = ({
   onTermsChange,
   onPolicyChange,
 }) => {
+  const {i18n} = useLocalization()
   const PrivacyPolicyLabel = useMemo(
     () => (
       <View style={styles.checkboxLabel}>
         <Text>
-          I've read the <LinkText onPress={noop}>privacy policy</LinkText>
+          {i18n.t('iVeRead')}{' '}
+          <LinkText onPress={noop}>{i18n.t('privacyPolicy')}</LinkText>
         </Text>
       </View>
     ),
-    [],
+    [i18n],
   )
 
   const TermsAndConditionsLabel = useMemo(
     () => (
       <View style={[styles.checkboxLabel]}>
         <Text style={styles.text}>
-          I accept the <LinkText onPress={noop}>terms & conditions </LinkText>
-          and <LinkText onPress={noop}>Keleya's advice</LinkText>
+          {i18n.t('iAccept')}
+          <LinkText onPress={noop}>{i18n.t('term')} </LinkText>
+          {i18n.t('and')} <LinkText onPress={noop}>{i18n.t('advice')}</LinkText>
         </Text>
       </View>
     ),
-    [],
+    [i18n],
   )
 
   return (

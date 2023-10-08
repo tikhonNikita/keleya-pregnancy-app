@@ -16,10 +16,9 @@ import {
 import {useOnboarding} from '../../state'
 import {RootStackParamList} from '../../navigation/RootNavigator'
 import {useBottomPadding} from '../../utils'
+import {useLocalization} from '../../../localization'
 
 const backgroundImage = require('../../../assets/authentication-background-image.jpg')
-
-const title = 'Add your details to set up\n an account'
 
 type SignUpScreenNavigationProp = NavigationProp<
   RootStackParamList,
@@ -27,6 +26,8 @@ type SignUpScreenNavigationProp = NavigationProp<
 >
 
 export const SignUpScreen: React.FC = () => {
+  const {i18n} = useLocalization()
+
   const navigation = useNavigation<SignUpScreenNavigationProp>()
   const paddingBottom = useBottomPadding()
 
@@ -76,7 +77,7 @@ export const SignUpScreen: React.FC = () => {
     <View style={[styles.container, {paddingBottom}]}>
       <Image source={backgroundImage} style={styles.backgroundImage} />
       <View style={styles.inputForm}>
-        <TitleText text={title} style={styles.title} />
+        <TitleText text={i18n.t('signUpTitle')} style={styles.title} />
         <EmailInput
           onChangeText={handleEmailInputChange}
           error={emailValidationError}
@@ -93,7 +94,11 @@ export const SignUpScreen: React.FC = () => {
           onPolicyChange={setPrivacyPolicyAccepted}
         />
       </View>
-      <Button title="Sign Up" onPress={onSignUp} disabled={buttonIsDisabled} />
+      <Button
+        title={i18n.t('signUp')}
+        onPress={onSignUp}
+        disabled={buttonIsDisabled}
+      />
     </View>
   )
 }
@@ -118,6 +123,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     opacity: 0.7,
     marginBottom: 5,
+    width: '80%',
   },
   backgroundImage: {
     flex: 1,

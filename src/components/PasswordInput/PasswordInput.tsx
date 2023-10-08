@@ -3,6 +3,7 @@ import {StyleSheet, TextInput, TextInputProps, View} from 'react-native'
 import {PressableIcon} from '../PressableIcon'
 import {BaseTextInput} from '../BaseTextInput'
 import {colors} from '../../theme'
+import {useLocalization} from '../../../localization'
 
 type Props = TextInputProps & {
   error?: string
@@ -10,6 +11,7 @@ type Props = TextInputProps & {
 
 const _PasswordInput = forwardRef<TextInput, Props>((props, ref) => {
   const {error, ...rest} = props
+  const {i18n} = useLocalization()
 
   const [showPassword, setShowPassword] = useState(false)
 
@@ -22,7 +24,7 @@ const _PasswordInput = forwardRef<TextInput, Props>((props, ref) => {
       <BaseTextInput
         ref={ref}
         errorMessage={error}
-        placeholder="Enter a password"
+        placeholder={i18n.t('passwordPlaceholder')}
         secureTextEntry={!showPassword}
         {...rest}
       />
