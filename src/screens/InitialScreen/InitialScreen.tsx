@@ -46,7 +46,7 @@ export const InitialScreen = () => {
         <PressableText
           text={LOGIN_TEXT}
           onPress={() => {
-            console.log('Log in')
+            navigation.navigate('SignInScreen')
           }}
           color={colors.GREYISH_BROWN}
         />

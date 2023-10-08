@@ -8,6 +8,7 @@ import {
   DueDateScreen,
   WorkoutsScreen,
   NotificationsScreen,
+  SignInScreen,
 } from '../screens'
 import {OnboardingProvider} from '../state'
 import {BackButton} from './BackButton'
@@ -15,6 +16,7 @@ import {BackButton} from './BackButton'
 export type RootStackParamList = {
   InitialScreen: undefined
   SignUpScreen: undefined
+  SignInScreen: undefined
   NameScreen: undefined
   DueDateScreen: undefined
   WorkoutsScreen: undefined
@@ -43,6 +45,11 @@ export const RootNavigator = () => {
         <Stack.Screen
           name="SignUpScreen"
           component={SignUpScreen}
+          options={OnboardingOptions}
+        />
+        <Stack.Screen
+          name="SignInScreen"
+          component={SignInScreen}
           options={OnboardingOptions}
         />
         <Stack.Screen
