@@ -13,6 +13,8 @@ const image = require('../../../assets/notifications-background-image.jpg')
 const TOP_OFFSET = 25
 
 const title = 'Get notifications to boost\n your motivation'
+const buttonText = 'Allow notifications'
+const skipText = 'Skip'
 
 export const NotificationsScreen: React.FC = () => {
   const paddingBottom = useBottomPadding()
@@ -41,13 +43,13 @@ export const NotificationsScreen: React.FC = () => {
       </View>
       <View style={styles.buttons}>
         <PressableText
-          text="Skip"
+          text={skipText}
           onPress={onSkipPress}
           color={colors.GREYISH_BROWN}
         />
         <Button
           style={{paddingBottom: paddingBottom}}
-          title="Allow notifications"
+          title={buttonText}
           onPress={onAllowPress}
         />
       </View>

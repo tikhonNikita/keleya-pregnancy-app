@@ -15,6 +15,9 @@ type DueDateScreenNavigationProp = NavigationProp<
 
 const image = require('../../../assets/due-date-background-image.jpg')
 
+const dueDateTitle = (name: string) => `When is your baby due, ${name}?`
+const continueText = 'Continue'
+
 export const DueDateScreen: React.FC = () => {
   const navigation = useNavigation<DueDateScreenNavigationProp>()
   const [date, setDate] = useState<Date | undefined>()
@@ -30,19 +33,17 @@ export const DueDateScreen: React.FC = () => {
     }
   }
 
-  const title = `When is your baby due, ${name}?`
-
   return (
     <View style={styles.container}>
       <Image source={image} style={styles.image} resizeMode="cover" />
       <View style={styles.form}>
-        <TitleText text={title} style={styles.title} />
+        <TitleText text={dueDateTitle(name)} style={styles.title} />
         <DateInput selectedDate={date} onSelectDate={setDate} />
       </View>
       <Button
         disabled={!date}
         style={{paddingBottom: paddingBottom}}
-        title="Continue"
+        title={continueText}
         onPress={handleNextPress}
       />
     </View>

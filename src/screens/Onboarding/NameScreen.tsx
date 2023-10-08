@@ -19,6 +19,8 @@ type NameScreenNavigationProp = NavigationProp<RootStackParamList, 'NameScreen'>
 const title =
   "It's great that you're here! First things first, what should we\n call you?"
 
+const continueText = 'Continue'
+
 const image = require('../../../assets/couch_smile.jpg')
 
 const gradient = ['rgba(233,228,229,1)', colors.WHITE]
@@ -61,7 +63,7 @@ export const NameScreen: React.FC = () => {
       <Button
         style={{paddingBottom: paddingBottom}}
         disabled={isDisabled}
-        title="Continue"
+        title={continueText}
         onPress={onContinuePress}
         errorMessage={nameValidationError}
       />

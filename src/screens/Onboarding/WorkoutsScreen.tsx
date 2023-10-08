@@ -19,6 +19,7 @@ const image = require('../../../assets/workout-goal-background-image.jpg')
 const TOP_OFFSET = 50
 
 const title = 'How many times a week do\n you want to be active?'
+const continueText = 'Continue'
 
 const DEFAULT_NUMBER_OF_WORKOUTS = 3
 
@@ -54,7 +55,7 @@ export const WorkoutsScreen: React.FC = () => {
       </View>
       <Button
         style={{paddingBottom: paddingBottom}}
-        title="Continue"
+        title={continueText}
         onPress={onNextPress}
       />
     </View>

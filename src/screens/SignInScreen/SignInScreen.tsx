@@ -26,6 +26,9 @@ type SignInScreenNavigationProp = NavigationProp<
 >
 const noop = () => {}
 
+const forgottenPasswordText = 'Have you forgotten your password?'
+const logIn = 'Log in'
+
 export const SignInScreen: React.FC = () => {
   const navigation = useNavigation<SignInScreenNavigationProp>()
   const paddingBottom = useBottomPadding()
@@ -86,12 +89,9 @@ export const SignInScreen: React.FC = () => {
         />
       </View>
       <View style={styles.buttons}>
-        <PressableText
-          text={'Have you forgotten your password?'}
-          onPress={noop}
-        />
+        <PressableText text={forgottenPasswordText} onPress={noop} />
         <Button
-          title="Log in"
+          title={logIn}
           onPress={onSignIn}
           disabled={buttonIsDisabled}
           loading={loading}
