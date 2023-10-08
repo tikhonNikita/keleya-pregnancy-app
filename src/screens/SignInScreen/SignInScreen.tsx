@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
     width: '100%',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    marginTop: '-5%',
   },
   title: {
     textAlign: 'center',
