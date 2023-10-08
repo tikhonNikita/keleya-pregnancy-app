@@ -13,7 +13,7 @@ const translations = {
     signUp: 'Sign up',
     iVeRead: "I've read the",
     privacyPolicy: 'Privacy Policy',
-    iAccept: 'I accept the',
+    iAccept: 'I accept the ',
     term: 'terms & conditions ',
     and: 'and',
     advice: "Keleya's advice",
