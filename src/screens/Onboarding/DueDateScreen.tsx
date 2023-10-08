@@ -8,12 +8,15 @@ import {RootStackParamList} from '../../navigation/RootNavigator'
 import {colors} from '../../theme'
 import {useBottomPadding} from '../../utils'
 
-type NameScreenNavigationProp = NavigationProp<RootStackParamList, 'NameScreen'>
+type DueDateScreenNavigationProp = NavigationProp<
+  RootStackParamList,
+  'DueDateScreen'
+>
 
 const image = require('../../../assets/due-date-background-image.jpg')
 
 export const DueDateScreen: React.FC = () => {
-  const navigation = useNavigation<NameScreenNavigationProp>()
+  const navigation = useNavigation<DueDateScreenNavigationProp>()
   const [date, setDate] = useState<Date | undefined>()
 
   const paddingBottom = useBottomPadding()

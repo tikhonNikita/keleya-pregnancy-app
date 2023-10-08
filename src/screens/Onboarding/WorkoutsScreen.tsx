@@ -1,15 +1,18 @@
 import React, {useState} from 'react'
 import {StyleSheet, View, ImageBackground} from 'react-native'
 import {NavigationProp, useNavigation} from '@react-navigation/native'
+import {useSafeAreaInsets} from 'react-native-safe-area-context'
 
 import {Button, TitleText, WorkoutAmountPicker} from '../../components'
 import {useOnboarding} from '../../state'
 import {RootStackParamList} from '../../navigation/RootNavigator'
 import {colors} from '../../theme'
 import {useBottomPadding} from '../../utils'
-import {useSafeAreaInsets} from 'react-native-safe-area-context'
 
-type NameScreenNavigationProp = NavigationProp<RootStackParamList, 'NameScreen'>
+type WorkoutsScreenNavigationProp = NavigationProp<
+  RootStackParamList,
+  'WorkoutsScreen'
+>
 
 const image = require('../../../assets/workout-goal-background-image.jpg')
 
@@ -20,7 +23,7 @@ const title = 'How many times a week do\n you want to be active?'
 const DEFAULT_NUMBER_OF_WORKOUTS = 3
 
 export const WorkoutsScreen: React.FC = () => {
-  const navigation = useNavigation<NameScreenNavigationProp>()
+  const navigation = useNavigation<WorkoutsScreenNavigationProp>()
   const [numberOfWorkouts, setNumberOfWorkouts] = useState(
     DEFAULT_NUMBER_OF_WORKOUTS,
   )
@@ -32,7 +35,7 @@ export const WorkoutsScreen: React.FC = () => {
 
   const handleNextPress = () => {
     setWorkoutsPerWeek(numberOfWorkouts)
-    navigation.navigate('DueDateScreen')
+    navigation.navigate('NotificationsScreen')
   }
 
   return (

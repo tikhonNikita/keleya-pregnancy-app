@@ -12,14 +12,13 @@ type OnboardingContextType = {
   name: string
   dueDate: Date
   workoutsPerWeek: number
-  notificationsAllowed: boolean
+
   setEmail: (name: string) => void
   setPassword: (name: string) => void
   setName: (name: string) => void
   setDueDate: (dueDate: Date) => void
   setWorkoutsPerWeek: (workoutsPerWeek: number) => void
-  setNotificationsAllowed: (notificationsAllowed: boolean) => void
-  submitOnboardingData: () => Promise<boolean>
+  submitOnboardingData: (notificationsAllowed: boolean) => Promise<boolean>
 }
 
 export const OnboardingContext = createContext<OnboardingContextType>({
@@ -28,13 +27,11 @@ export const OnboardingContext = createContext<OnboardingContextType>({
   email: '',
   dueDate: new Date(),
   workoutsPerWeek: 0,
-  notificationsAllowed: false,
   setEmail: () => {},
   setPassword: () => {},
   setName: () => {},
   setDueDate: () => {},
   setWorkoutsPerWeek: () => {},
-  setNotificationsAllowed: () => {},
   submitOnboardingData: async () => false,
 })
 
@@ -52,9 +49,8 @@ export const OnboardingProvider: React.FC<PropsWithChildren> = ({children}) => {
   const [password, setPassword] = useState('')
   const [dueDate, setDueDate] = useState(new Date())
   const [workoutsPerWeek, setWorkoutsPerWeek] = useState(0)
-  const [notificationsAllowed, setNotificationsAllowed] = useState(false)
 
-  const submitOnboardingData = async () => {
+  const submitOnboardingData = async (notificationsAllowed: boolean) => {
     try {
       const success = await sendOnboardingData(
         email,
@@ -77,13 +73,11 @@ export const OnboardingProvider: React.FC<PropsWithChildren> = ({children}) => {
     name,
     dueDate,
     workoutsPerWeek,
-    notificationsAllowed,
     setName,
     setPassword,
     setEmail,
     setDueDate,
     setWorkoutsPerWeek,
-    setNotificationsAllowed,
     submitOnboardingData,
   }
 
