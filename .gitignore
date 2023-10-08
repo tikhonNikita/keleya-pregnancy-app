@@ -42,3 +42,4 @@ ios
 android
 artifacts
 e2e/diffs/*
+.vscode
