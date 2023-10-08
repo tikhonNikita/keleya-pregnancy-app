@@ -30,7 +30,10 @@ export const InitialScreen = () => {
   const marginBottom = bottom > 0 ? bottom : 20
 
   return (
-    <ImageBackground source={backgroundSource} style={styles.imageContainer}>
+    <ImageBackground
+      source={backgroundSource}
+      style={styles.imageContainer}
+      testID="initialScreenRoot">
       <View style={[styles.logoContainer, {top: top + TOP_OFFSET}]}>
         <Image source={logoSource} style={styles.logo} />
         <TitleText text={TITLE} style={styles.logoText} />
