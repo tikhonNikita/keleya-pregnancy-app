@@ -1,10 +1,14 @@
 import React from 'react'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 
-import {InitialScreen, SignUpScreen} from '../screens'
+import {
+  InitialScreen,
+  SignUpScreen,
+  NameScreen,
+  DueDateScreen,
+} from '../screens'
 import {OnboardingProvider} from '../state'
 import {BackButton} from './BackButton'
-import {NameScreen} from '../screens/Onboarding'
 
 export type RootStackParamList = {
   InitialScreen: undefined
@@ -42,6 +46,11 @@ export const RootNavigator = () => {
         <Stack.Screen
           name="NameScreen"
           component={NameScreen}
+          options={OnboardingOptions}
+        />
+        <Stack.Screen
+          name="DueDateScreen"
+          component={DueDateScreen}
           options={OnboardingOptions}
         />
       </Stack.Navigator>

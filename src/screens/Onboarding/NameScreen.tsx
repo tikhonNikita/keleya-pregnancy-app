@@ -61,7 +61,7 @@ export const NameScreen: React.FC = () => {
       <Button
         style={{paddingBottom: paddingBottom}}
         disabled={isDisabled}
-        title="Next"
+        title="Continue"
         onPress={handleNextPress}
         errorMessage={nameValidationError}
       />
