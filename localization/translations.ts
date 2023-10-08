@@ -1,7 +1,7 @@
 const translations = {
   en: {
     getStarted: 'Get started',
-    orLogIn: 'or login',
+    orLogIn: 'Or login',
     initScreenTitle: 'For fit and relaxed pregnancy',
     signUpTitle: 'Add your details to set up\n an account',
     passwordPlaceholder: 'Enter a password',
