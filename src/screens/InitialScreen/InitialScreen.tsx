@@ -28,6 +28,14 @@ export const InitialScreen = () => {
 
   const marginBottom = bottom > 0 ? bottom : 20
 
+  const onGettingStartedPress = () => {
+    navigation.navigate('SignUpScreen')
+  }
+
+  const onSignInPress = () => {
+    navigation.navigate('SignInScreen')
+  }
+
   return (
     <ImageBackground
       source={backgroundSource}
@@ -39,17 +47,10 @@ export const InitialScreen = () => {
       </View>
 
       <View style={[styles.actionsSection, {marginBottom}]}>
-        <Button
-          title={i18n.t('getStarted')}
-          onPress={() => {
-            navigation.navigate('SignUpScreen')
-          }}
-        />
+        <Button title={i18n.t('getStarted')} onPress={onGettingStartedPress} />
         <PressableText
           text={i18n.t('orLogIn')}
-          onPress={() => {
-            navigation.navigate('SignInScreen')
-          }}
+          onPress={onSignInPress}
           color={colors.GREYISH_BROWN}
         />
         <StepIndicator numberOfSteps={3} currentStep={1} />
