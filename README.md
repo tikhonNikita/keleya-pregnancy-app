@@ -15,7 +15,7 @@ Application emulating simple onboarding process
 
 ## To run app
 1. Make sure you are in the project's main directory
-2. Run ``` yarn``` to install dependencies
+2. Run ```yarn``` to install dependencies
 3. For iOS run: `yarn ios`
 4.  For Android run: `yarn android`
 5. You also can run the project using Expo GO.  For this just run `yarn start`
